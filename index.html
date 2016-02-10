@@ -3,13 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 	<title>PATTERNS</title>
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+
+	<script type="text/template" id="template">
+		<p>
+			<%= pattern %>
+			<button data-index="<%= index %>">RUN</button>
+		</p>
+	</script>
+	<style type="text/css">
+		.container {
+			width  : 500px;
+			margin : 0 auto;
+		}
+
+		button {
+			float : right;
+		}
+	</style>
 </head>
 <body>
+<div class="container"></div>
 
-<p>1. Singleton.js</p>
-
-<script type="text/javascript" src="patterns/singleton/singleton-with-new.js"></script>
-<script type="text/javascript" src="patterns/singleton/singleton-with-new.test.js"></script>
+<!--<script type="text/javascript" src="patterns/singleton/singleton-with-new.js"></script>-->
+<!--<script type="text/javascript" src="patterns/singleton/singleton-with-new.test.js"></script>-->
+<!--<script type="text/javascript" src="patterns/singleton/singleton-with-getInstance.js"></script>-->
+<!--<script type="text/javascript" src="patterns/singleton/singleton-with-getInstance.test.js"></script>-->
 
 </body>
 </html>
