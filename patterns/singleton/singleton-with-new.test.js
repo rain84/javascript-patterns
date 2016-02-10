@@ -7,21 +7,6 @@
  */
 
 
-/*  Singleton Fabric  */
-function singletonFabric( classConstructor ) {
-    return (function () {
-        var instance;
-
-        return function () {
-            if ( instance ) { return instance; }
-
-            classConstructor.apply( this );
-            instance = this;
-        };
-    }());
-}
-
-
 /*  test    */
 var ClassSingleton = singletonFabric( function () {
     console.log( 'Singleton should be inited only once' );
