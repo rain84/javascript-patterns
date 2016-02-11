@@ -9,7 +9,7 @@
 
 /*  Singleton Fabric
  *   Instance of singleton-cass is getting by "new ClassSingleton"
-  * */
+ * */
 function singletonFabric( Class ) {
 	return (function ( _Class ) {
 		var instance = new _Class()
