@@ -8,17 +8,20 @@
 
 
 /*  Singleton Fabric
-*   Instance of singleton-cass is getting by "new ClassSingleton"
-* */
-function singletonFabric( classConstructor ) {
-    return (function () {
-        var instance;
+ *   Instance of singleton-cass is getting by "new ClassSingleton"
+  * */
+function singletonFabric( Class ) {
+	return (function ( _Class ) {
+		var instance = new _Class()
+			;
 
-        return function () {
-            if ( instance ) { return instance; }
+		function Class() {
+			throw new Error( 'Singleton class can not be executed.' );
+		}
 
-            classConstructor.apply( this );
-            instance = this;
-        };
-    }());
+		Class.getInstance = function () {return instance};
+		Class.prototype   = _Class.prototype;
+
+		return Class;
+	}( Class ));
 }

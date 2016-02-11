@@ -8,16 +8,17 @@
 
 
 /*  Singleton Fabric
- *   Instance of singleton-cass is getting by "new ClassSingleton"
- * */
-function singletonFabric( classConstructor ) {
+ *  Instance of singleton-cass is getting by "new ClassSingleton"
+ *  TODO: Should be re-worked (look into the tests)
+ */
+function singletonFabric( Class ) {
 	return (function () {
 		var instance;
 
 		return function () {
 			if ( instance ) { return instance; }
 
-			classConstructor.apply( this );
+			Class.apply( this );
 			instance = this;
 		};
 	}());

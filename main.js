@@ -56,8 +56,16 @@
 			nodeScript.async   = true;
 			nodeScript.onload  = _.compose(
 				function () {
-					$this.off( 'click.addScripts' );
-					$this.click( window.test ).click();
+					var testFn = window.test;
+					$this
+						.off( 'click.addScripts' )
+						.click( function () {
+							console.clear();
+							location.hash = '#' + pattern;
+							testFn();
+						} )
+						.click()
+					;
 					
 					delete window.test;
 				},
@@ -73,7 +81,9 @@
 		addScripts.onError = function () {};
 
 		var hashIndex = location.hash && patterns.indexOf( location.hash.slice( 1 ) );
-		if ( hashIndex && !!~hashIndex ) {
+
+		if ( typeof hashIndex === 'number' && !!~hashIndex ) {
+			console.clear();
 			$( 'button' )
 				.get( hashIndex )
 				.click()
@@ -84,3 +94,28 @@
 	   'singleton-with-new',
 	   'singleton-with-getInstance',
    ] ));
+
+
+(function () {
+
+	function Constructor() {
+
+		this.a = 1;
+		this.b = 2;
+
+		console.log( 'this : %O, runned as %s',
+		             this,
+		             this instanceof Constructor ? 'constructor' : 'as function'
+		);
+	}
+
+	function ConstructorPapa() {}
+
+	Constructor.prototype             = Object.create( ConstructorPapa.prototype );
+	Constructor.prototype.constructor = Constructor;
+
+	var instance = new Constructor();
+	Constructor.call( instance );
+
+
+});
