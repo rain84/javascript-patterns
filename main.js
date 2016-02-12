@@ -93,4 +93,6 @@
 }( [
 	   'singleton-with-new',
 	   'singleton-with-getInstance',
+	   'subject-observer',
+	   'publish-subscribe',
    ] ));

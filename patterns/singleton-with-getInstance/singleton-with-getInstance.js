@@ -19,7 +19,7 @@ function singletonFabric( Class ) {
 			throw new Error( 'Singleton class can not be executed.' );
 		}
 
-		Class.getInstance = function () {return instance};
+		Class.getInstance = function () {return instance;};
 		Class.prototype   = _Class.prototype;
 
 		return Class;

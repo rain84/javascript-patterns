@@ -6,3 +6,8 @@
  *
  */
 
+
+;(function () {
+	"use strict";
+	
+})();
