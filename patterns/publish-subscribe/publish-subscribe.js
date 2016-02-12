@@ -109,25 +109,23 @@ var observable = (function () {
 		var args = [].slice.call( arguments, 1 ),
 		    event;
 		
-		events = events.split( /\W+/ );
-		!events[events.length - 1] && (events.length--);
-		
-		events.forEach( function ( event ) {
-			var eventHandlers = eventContainer[event];
+		getEvents( events )
+			.forEach( function ( event ) {
+				var eventHandlers = eventContainer[event];
 
-			if ( !eventHandlers ) { return; }
-			
-			var idx = 0,
-			    _args  = args.slice()
-				;
-			
-			_args.unshift( event );
-			
-			while ( idx < eventHandlers.length ) {
-				eventHandlers[idx].apply( null, _args );
-				idx++;
-			}
-		} );
+				if ( !eventHandlers ) { return; }
+
+				var idx   = 0,
+				    _args = args.slice()
+					;
+
+				_args.unshift( event );
+
+				while ( idx < eventHandlers.length ) {
+					eventHandlers[idx].apply( null, _args );
+					idx++;
+				}
+			} );
 		
 		return this;
 	}
