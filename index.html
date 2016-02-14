@@ -9,10 +9,19 @@
 	<script type="text/javascript" src="test.js"></script>
 	<script type="text/javascript" src="performance.js"></script>
 
-	<script type="text/template" id="template">
+	<script type="text/html" id="template">
 		<p>
 			<%= pattern %>
 			<button data-index="<%= index %>">RUN</button>
+		</p>
+	</script>
+	<script type="text/html" id="photoTemplate">
+		<p>
+			Lanistas unda in teres cirpi!
+			<br/>
+			<%= data %>
+			<br/>
+			Cum era nocere, omnes habenaes magicae talis, pius extumes.
 		</p>
 	</script>
 	<style type="text/css">
@@ -28,6 +37,6 @@
 </head>
 <body>
 <div class="container"></div>
-
+<div id="content"></div>
 </body>
 </html>

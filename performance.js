@@ -7,8 +7,53 @@
  */
 
 
+	//  While(i--) VS While(i++ < length)
+(function () {
+	"user strict";
 
-	//  Array copying. Array.slice() VS for(i++)-cycle VS for(i--)-cycle VS while(i--)-cycle
+	var length = 10,
+	    idx,
+	    iteratations,
+	    start,
+	    array,
+	    arrayCopy,
+	    performance1,
+	    performance2
+		;
+
+	start        = performance.now();
+	iteratations = 100000;
+	while ( iteratations-- ) {
+		array     = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+		arrayCopy = [];
+
+		while ( idx-- ) {
+			arrayCopy[idx] = array[idx];
+		}
+	}
+	performance1 = performance.now() - start;
+	console.log( 'While(i--) : %s', performance1 );
+
+
+	start        = performance.now();
+	iteratations = 100000;
+	while ( iteratations-- ) {
+		idx       = -1;
+		array     = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+		arrayCopy = [];
+
+		while ( ++idx < length ) {
+			arrayCopy[idx] = array[idx];
+		}
+	}
+	performance2 = performance.now() - start;
+	console.log( 'While(i++) : %s', performance2 );
+
+
+	console.log( 'While(i--) VS While(i++ < length) : %s', performance1 / performance2 );
+});
+
+//  Array copying. Array.slice() VS for(i++)-cycle VS for(i--)-cycle VS while(i--)-cycle
 (function () {
 	"user strict";
 

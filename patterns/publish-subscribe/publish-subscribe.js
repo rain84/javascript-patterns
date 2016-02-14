@@ -38,10 +38,10 @@ var observable = (function () {
 	}
 
 	mixin = {
-		on      : observableOn,
-		one     : observableOne,
-		off     : observableOff,
-		trigger : observableTrigger,
+		on      : observableOn,         //  alias for "subscribe"
+		one     : observableOne,        //  alias for "subscribe-once"
+		off     : observableOff,        //  alias for "un-subscribe"
+		trigger : observableTrigger,    //  alias for "publish"
 	};
 	
 
@@ -115,15 +115,14 @@ var observable = (function () {
 
 				if ( !eventHandlers ) { return; }
 
-				var idx   = 0,
+				var idx   = -1,
 				    _args = args.slice()
 					;
 
 				_args.unshift( event );
 
-				while ( idx < eventHandlers.length ) {
+				while ( ++idx < eventHandlers.length ) {
 					eventHandlers[idx].apply( null, _args );
-					idx++;
 				}
 			} );
 		

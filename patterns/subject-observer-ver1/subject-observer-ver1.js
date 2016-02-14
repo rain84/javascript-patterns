@@ -40,10 +40,11 @@ function subjectRemove( observer ) {
 }
 function subjectNotify() {
 	"use strict";
-	var idx = this.observers.length,
+	var length = this.observers.length,
+	    idx    = -1,
 	    observer;
 
-	while ( idx-- ) {
+	while ( ++idx < length ) {
 		observer = this.observers[idx];
 		observer.update.apply( observer, arguments );
 	}

@@ -79,4 +79,41 @@ window.test = function () {
 		.trigger( 'fire ice' )
 		.tap()
 	;
+
+	(function sampleWithDOM() {
+		console.clear();
+
+		var btnEl       = document.createElement( 'button' );
+		btnEl.innerText = 'Publish';
+		observable( btnEl );
+
+		btnEl.onclick = function () { btnEl.trigger( 'click' ); };
+
+		document
+			.getElementsByClassName( 'container' )[0]
+			.appendChild( btnEl )
+		;
+
+
+		var idx   = 0,
+		    pColl = document.getElementsByTagName( 'p' ),
+		    item
+			;
+
+		while ( idx < pColl.length ) {
+			(function ( item ) {
+				observable( item )
+					.on( 'click', function () {
+						item.style.color === 'red'
+							? item.style.color = ''
+							: item.style.color = 'red'
+						;
+					} )
+				;
+			})( pColl.item( idx ) );
+
+			idx++;
+		}
+	});
+
 };
