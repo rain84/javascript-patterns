@@ -12,14 +12,15 @@
  * */
 function singletonFabric( Class ) {
 	return (function ( _Class ) {
-		var instance = new _Class()
-			;
+		var instance;
 
 		function Class() {
 			throw new Error( 'Singleton class can not be executed.' );
 		}
 
-		Class.getInstance = function () {return instance;};
+		Class.getInstance = function () {
+			return instance || (instance = new _Class());
+		};
 		Class.prototype   = _Class.prototype;
 
 		return Class;

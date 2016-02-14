@@ -23,13 +23,12 @@ window.test = function () {
 
 
 	Class.prototype.protoFoo = 'protoFoo - val';
-	var example1             = Class.getInstance();
-	var example2             = Class.getInstance();
+	//var example1             = Class.getInstance();
+	//var example2             = Class.getInstance();
 	Class.prototype.protoMoo = 'protoMoo - val';
 	
-	
-	console.log( '(example1 === example2) : %s', example1 === example2 );
-	console.log( '(example1 as object : %O', example1 );
+	//console.log( '(example1 === example2) : %s', example1 === example2 );
+	//console.log( '(example1 as object : %O', example1 );
 
 };
 
