@@ -11,7 +11,6 @@
 	"use strict";
 
 	function DOMContentLoaded() {
-
 		/*
 		 var nodeTemplate = document.getElementById( 'photoTemplate' ).innerHTML,
 		 nodeDiv      = document.createElement( 'div' )
@@ -28,9 +27,6 @@
 
 		 $( '#content' ).html( compiled( { script : 777 } ) );
 		 */
-
-
-
 	}
 
 	document.addEventListener( 'DOMContentLoaded', DOMContentLoaded );
